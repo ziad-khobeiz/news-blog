@@ -1,11 +1,18 @@
-<h1>Legendary News Blog</h1>
-<p>Welcome to the legendary news blog</p>
+<div class="card">
+  <div class="card-body text-center">
+    <p style = "font-size:70px">Legendary News Blog</p>
+    <p style = "font-size:25px">Welcome to the legendary news blog!</p>
+  </div>
+</div>
 
 <br/>
 
-<h2>Published Articles:</h2>
+<h1>Published Articles:</h1>
 
-<table>
+<% if @articles.empty? %>
+  No articles available.
+<% else %>
+table class="table">
   <thead>
     <tr>
       <th>Title</th>
@@ -24,5 +31,6 @@
     <% end %>
   </tbody>
 </table>
+<% end %>
 
 <br>
