@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_08_03_175245) do
 
   create_table "articles", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "journalist_id"
     t.string "title"
     t.text "description"
     t.boolean "approved"

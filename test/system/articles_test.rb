@@ -17,7 +17,7 @@ class ArticlesTest < ApplicationSystemTestCase
     check "Approved" if @article.approved
     fill_in "Description", with: @article.description
     fill_in "Title", with: @article.title
-    fill_in "User", with: @article.user_id
+    fill_in "Journalist", with: @article.journalist_id
     click_on "Create Article"
 
     assert_text "Article was successfully created"
@@ -31,7 +31,7 @@ class ArticlesTest < ApplicationSystemTestCase
     check "Approved" if @article.approved
     fill_in "Description", with: @article.description
     fill_in "Title", with: @article.title
-    fill_in "User", with: @article.user_id
+    fill_in "Journalist", with: @article.journalist_id
     click_on "Update Article"
 
     assert_text "Article was successfully updated"
