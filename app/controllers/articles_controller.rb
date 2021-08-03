@@ -1,10 +1,11 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
-  before_action :authenticate_journalist!, except: [:index, :show]
+  before_action :authenticate_journalist!
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @my_articles = Article.where("journalist_id = ?", current_journalist.id)
+    @articles = Article.where("journalist_id != ?", current_journalist.id)
   end
 
   # GET /articles/1 or /articles/1.json

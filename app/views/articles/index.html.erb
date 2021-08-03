@@ -1,33 +1,13 @@
-<p id="notice"><%= notice %></p>
+<h1>My Articles</h1>
 
-<h1>Articles</h1>
+<%= render partial: "list_articles", locals: {articles: @my_articles} %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Journalist</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Approved</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<br/>
 
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.journalist_id %></td>
-        <td><%= article.title %></td>
-        <td><%= article.description %></td>
-        <td><%= article.approved %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<h1>Other Articles</h1>
 
-<br>
+<%= render partial: "list_articles", locals: {articles: @articles} %>
+
+<br/>
 
 <%= link_to 'New Article', new_article_path %>
