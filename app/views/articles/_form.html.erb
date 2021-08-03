@@ -12,11 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :journalist_id %>
-    <%= form.number_field :journalist_id %>
-  </div>
-
-  <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
@@ -25,12 +20,7 @@
     <%= form.label :description %>
     <%= form.text_area :description %>
   </div>
-
-  <div class="field">
-    <%= form.label :approved %>
-    <%= form.check_box :approved %>
-  </div>
-
+  
   <div class="actions">
     <%= form.submit %>
   </div>
