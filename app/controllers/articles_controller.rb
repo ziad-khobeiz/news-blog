@@ -1,6 +1,12 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
   before_action :authenticate_journalist!
+  before_action :authenticate_owner!, only: [:approve, :destory]
+
+
+  def approve
+    @articles = Article.where(approved: false)
+  end
 
   # GET /articles or /articles.json
   def index

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'articles/approve'
   get 'home/index'
   devise_for :journalists
   resources :articles
