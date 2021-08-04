@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2021_08_04_162128) do
     t.boolean "approved"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["journalist_id"], name: "index_articles_on_journalist_id"
   end
 
   create_table "journalists", force: :cascade do |t|
