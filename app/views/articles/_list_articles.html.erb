@@ -1,38 +1,43 @@
-<table class = "table">
-  <thead>
-    <tr>
-      <th>Journalist</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Approval Status</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% articles.each do |article| %>
+<% if articles.empty? %>
+  <hr/>
+  No articles available.
+<% else %>
+  <table class = "table">
+    <thead>
       <tr>
-        <td><%= "#{article.journalist.first_name} #{article.journalist.last_name}" %></td>
-        <td><%= article.title %></td>
-        <td><%= article.description %></td>
-        <td>
-        <% if article.approved? %>
-          Yes
-        <% else %>
-          <% if current_journalist.owner? %>
-            <%= link_to 'Approve now', root_path, class: "btn btn-primary" %>
-          <% else %>
-            No
-          <% end %>
-        <% end %>
-        </td>
-        <td><%= link_to 'Show', article, class: "btn btn-secondary" %></td>
-        <% if current_journalist.owner? %>
-          <td><%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
-        <% else %>
-          <td></td>
-        <% end %>
+        <th>Journalist</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Approval Status</th>
+        <th colspan="2"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% articles.each do |article| %>
+        <tr>
+          <td><%= "#{article.journalist.first_name} #{article.journalist.last_name}" %></td>
+          <td><%= article.title %></td>
+          <td><%= article.description %></td>
+          <td>
+          <% if article.approved? %>
+            Yes
+          <% else %>
+            <% if current_journalist.owner? %>
+              <%= link_to 'Approve now', approve_path(article), class: "btn btn-primary" %>
+            <% else %>
+              No
+            <% end %>
+          <% end %>
+          </td>
+          <td><%= link_to 'Show', article, class: "btn btn-secondary" %></td>
+          <% if current_journalist.owner? %>
+            <td><%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+          <% else %>
+            <td></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

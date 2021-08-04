@@ -9,28 +9,34 @@
 
 <h1>Published Articles:</h1>
 
+<br/>
+
 <% if @articles.empty? %>
+  <hr/>
   No articles available.
 <% else %>
-table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Journalist</th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @articles.each do |article| %>
+  <table class = "table">
+    <thead>
       <tr>
-        <td><%= article.title %></td>
-        <td><%= article.journalist_id %></td>
-        <td><%= link_to 'View', article %></td>
+        <th>Journalist</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @articles.each do |article| %>
+        <tr>
+          <td><%= "#{article.journalist.first_name} #{article.journalist.last_name}" %></td>
+          <td><%= article.title %></td>
+          <td><%= article.description %></td>
+          <td><%= link_to 'Show', article, class: "btn btn-secondary" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>
+
 
 <br>
