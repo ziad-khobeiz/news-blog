@@ -22,4 +22,8 @@
   <% end %>
 </p>
 
-<%= link_to 'Back', articles_path %>
+<% if journalist_signed_in? %>
+  <%= link_to 'Back', articles_path %>
+<% else %>
+  <%= link_to 'Back', root_path %>
+<% end %>
