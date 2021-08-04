@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy approve ]
-  before_action :authenticate_journalist!
-  before_action :authenticate_owner!, only: [:approve, :destory]
+  before_action :authenticate_journalist!, except: [:show]
+  before_action :authenticate_owner!, only: [:approve, :destory, :approval_requests]
 
 
   def approve
