@@ -12,7 +12,7 @@
   <tbody>
     <% articles.each do |article| %>
       <tr>
-        <td><%= article.journalist.email %></td>
+        <td><%= "#{article.journalist.first_name} #{article.journalist.last_name}" %></td>
         <td><%= article.title %></td>
         <td><%= article.description %></td>
         <td>
