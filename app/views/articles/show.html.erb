@@ -1,29 +1,24 @@
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
+<div class="card">
+  <div class="card-body">
+    <h1 style = "font-size:70px">
+      <%= @article.title %>
+    </h1>
 
-<p>
-  <strong>Author:</strong>
-  <%= "#{@article.journalist.first_name} #{@article.journalist.last_name}" %>
-</p>
+    <h5>
+      Author:
+      <%= "#{@article.journalist.first_name} #{@article.journalist.last_name}" %>
+    </h5>
+  </div>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @article.description %>
-</p>
+<br/>
 
-<p>
-  <strong>Approval Status:</strong>
-  <% if @article.approved? %>
-    Approved
-  <% else %>
-    Not approved yet
-  <% end %>
-</p>
+<textarea readonly class="form-control" rows="25"><%= @article.description %></textarea>
+
+<br/>
 
 <% if journalist_signed_in? %>
-  <%= link_to 'Back', articles_path %>
+  <%= link_to 'Back', articles_path, class: "btn btn-primary" %>
 <% else %>
-  <%= link_to 'Back', root_path %>
+  <%= link_to 'Back', root_path, class: "btn btn-primary" %>
 <% end %>
