@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_owner!, only: [:approve, :destory]
 
 
-  def approve
+  def approval_requests
     @articles = Article.where(approved: false)
   end
 
