@@ -5,9 +5,8 @@
   <table class = "table">
     <thead>
       <tr>
-        <th>Journalist</th>
+        <th>Author</th>
         <th>Title</th>
-        <th>Description</th>
         <th>Approval Status</th>
         <th colspan="2"></th>
       </tr>
@@ -18,7 +17,6 @@
         <tr>
           <td><%= "#{article.journalist.first_name} #{article.journalist.last_name}" %></td>
           <td><%= article.title %></td>
-          <td><%= article.description %></td>
           <td>
           <% if article.approved? %>
             Yes

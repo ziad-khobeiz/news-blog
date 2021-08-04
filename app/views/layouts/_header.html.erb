@@ -25,11 +25,16 @@
             <% end %>
             <% if journalist_signed_in? %>
               <li><hr class="dropdown-divider"></li>
+              <% if current_journalist.owner? %>
+                <li class="nav-item">
+                  <%= link_to 'Approval Requests', articles_approval_requests_path, class: "dropdown-item" %>
+                </li>
+              <% end %>
               <li class="nav-item">
                 <%= link_to 'Articles', articles_path, class: "dropdown-item" %>
               </li>
               <li class="nav-item">
-                <%= link_to 'Add Article', new_article_path, class: "dropdown-item" %>
+                <%= link_to 'New Article', new_article_path, class: "dropdown-item" %>
               </li>
             <% end %>
           </ul>

@@ -18,9 +18,8 @@
   <table class = "table">
     <thead>
       <tr>
-        <th>Journalist</th>
         <th>Title</th>
-        <th>Description</th>
+        <th>Author</th>
         <th></th>
       </tr>
     </thead>
@@ -28,9 +27,8 @@
     <tbody>
       <% @articles.each do |article| %>
         <tr>
-          <td><%= "#{article.journalist.first_name} #{article.journalist.last_name}" %></td>
           <td><%= article.title %></td>
-          <td><%= article.description %></td>
+          <td><%= "#{article.journalist.first_name} #{article.journalist.last_name}" %></td>
           <td><%= link_to 'Show', article, class: "btn btn-secondary" %></td>
         </tr>
       <% end %>

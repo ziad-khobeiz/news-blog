@@ -1,11 +1,11 @@
 <p>
-  <strong>Journalist:</strong>
-  <%= @article.journalist_id %>
+  <strong>Title:</strong>
+  <%= @article.title %>
 </p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @article.title %>
+  <strong>Author:</strong>
+  <%= "#{@article.journalist.first_name} #{@article.journalist.last_name}" %>
 </p>
 
 <p>
@@ -14,8 +14,12 @@
 </p>
 
 <p>
-  <strong>Approved:</strong>
-  <%= @article.approved %>
+  <strong>Approval Status:</strong>
+  <% if @article.approved? %>
+    Approved
+  <% else %>
+    Not approved yet
+  <% end %>
 </p>
 
 <%= link_to 'Back', articles_path %>
