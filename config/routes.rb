@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'articles/approval_requests'
+  get 'articles/approve/:id', to: 'articles#approve', as: :approve
   get 'home/index'
   devise_for :journalists
   resources :articles, :except => [:edit, :update]

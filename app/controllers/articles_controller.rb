@@ -1,8 +1,21 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: %i[ show edit update destroy ]
+  before_action :set_article, only: %i[ show edit update destroy approve ]
   before_action :authenticate_journalist!
   before_action :authenticate_owner!, only: [:approve, :destory]
 
+
+  def approve
+    if @article.approved?
+      redirect_to @article, notice: "The article is already approved."
+    else
+      @article.approved = true
+      if @article.save
+        redirect_to @article, notice: "The article is successfully approved."
+      else
+        render :show, status: :unprocessable_entity
+      end
+    end
+  end
 
   def approval_requests
     @articles = Article.where(approved: false)
