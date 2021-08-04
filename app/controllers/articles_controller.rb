@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy approve ]
   before_action :authenticate_journalist!, except: [:show]
   before_action :authenticate_owner!, only: [:approve, :destory, :approval_requests]
+  before_action :show_published_only, only: [:show]
 
 
   def approve
@@ -80,6 +81,11 @@ class ArticlesController < ApplicationController
   end
 
   private
+
+    def show_published_only
+      authenticate_journalist! unless @article.approved?
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
