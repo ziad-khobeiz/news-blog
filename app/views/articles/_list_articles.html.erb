@@ -4,8 +4,8 @@
       <th>Journalist</th>
       <th>Title</th>
       <th>Description</th>
-      <th>Approved</th>
-      <th colspan="3"></th>
+      <th>Approval Status</th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -16,15 +16,22 @@
         <td><%= article.title %></td>
         <td><%= article.description %></td>
         <td>
-          <% if article.approved %>
-            Yes
+        <% if article.approved? %>
+          Yes
+        <% else %>
+          <% if current_journalist.owner? %>
+            <%= link_to 'Approve now', root_path, class: "btn btn-primary" %>
           <% else %>
             No
           <% end %>
+        <% end %>
         </td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', article, class: "btn btn-secondary" %></td>
+        <% if current_journalist.owner? %>
+          <td><%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+        <% else %>
+          <td></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
