@@ -3,6 +3,11 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def authenticate_owner!
+    authenticate_journalist!
+    redirect_to root_path, status: :forbidden unless current_journalist.owner?
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
   end
