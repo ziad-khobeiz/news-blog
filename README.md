@@ -25,7 +25,7 @@ Then install the needed gems:
 $ bundle install
 ```
 
-Install yarn:
+Install dependencies:
 
 ```
 $ yarn install
