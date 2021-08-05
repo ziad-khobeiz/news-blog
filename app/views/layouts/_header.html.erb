@@ -15,9 +15,12 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <% if journalist_signed_in? %>
-            <li>
-              <%= link_to 'Log out', destroy_journalist_session_path, method: :delete, class: "dropdown-item" %>
-            </li>
+              <li>
+                <%= link_to 'Log out', destroy_journalist_session_path, method: :delete, class: "dropdown-item" %>
+              </li>
+              <li>
+                <%= link_to 'Edit Profile', edit_journalist_registration_path, class: "dropdown-item" %>
+              </li>
             <% else %>
               <li>
                 <%= link_to 'Login', new_journalist_session_path, class: "dropdown-item" %>
