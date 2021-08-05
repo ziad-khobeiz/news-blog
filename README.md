@@ -1,24 +1,49 @@
-# README
+# Legendary News Blog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an application designed for a journal to manage the articles that are being posted by the journalists.
 
-Things you may want to cover:
+## Steps to run the app
 
-* Ruby version
+First clone the repo and `cd` into the directory:
 
-* System dependencies
+```
+$ git clone https://github.com/ziad-khobeiz/news-blog.git
+$ cd news-blog
+```
 
-* Configuration
+Then install the needed gems:
 
-* Database creation
+```
+$ bundle install
+```
 
-* Database initialization
+Install yarn:
 
-* How to run the test suite
+```
+$ yarn install
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Then create and migrate the database:
 
-* Deployment instructions
+```
+$ rake db:create
+$ rake db:migrate
+```
 
-* ...
+Run the add_owner rake task to create an account for the owner of the journal with the following credintials:
+
+email: ```micheal@email.com```
+
+password: ```admin1234```
+
+The owner can update his email, password, and name later.
+
+```
+$ rake add_owner
+```
+
+Finally, run the app in a local server:
+
+```
+$ rails server
+```
